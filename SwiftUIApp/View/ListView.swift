@@ -22,9 +22,9 @@ struct ListView: View {
                             .frame(width: 15, height: 15)
                             .foregroundColor(.blue)
                         VStack {
-                            Text("タイトル")
+                            Text(todo.title)
                                 .font(.title3)
-                            Text("デスクリプション")
+                            Text(todo.comment)
                                 .font(.caption2)
                         }
                     }
