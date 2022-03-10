@@ -11,15 +11,21 @@ struct AddTodo: View {
     
     @Environment(\.presentationMode) var presentation
     @ObservedObject var viewModel = ListViewModel.shared
+    @State private var selectionDate = Date()
     
     var body: some View {
         NavigationView {
+           
             List {
                 Section(header: Text("タイトル")) {
                     TextField("", text: $viewModel.title)
                 }
                 Section(header: Text("デスクリプション")) {
                     TextField("", text: $viewModel.comment)
+                }
+                Section(header: Text("日時選択")) {
+                    DatePicker("日時を選択", selection: $selectionDate)
+                        .datePickerStyle(WheelDatePickerStyle())
                 }
             }
             .navigationTitle(viewModel.updatingTodo == nil ? "ToDoを追加" : "ToDoを更新")
